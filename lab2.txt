@@ -1,0 +1,64 @@
+db
+
+show dbs
+
+use lab2
+
+show collections
+
+db.createCollection('footballTeams')
+db.footballTeams.save()
+
+load("C:\OSPanel\userdata\MongoDB-6.0-Win10\import\footballTeams.js")
+load("C:\OSPanel\userdata\MongoDB-6.0-Win10\import\footballMatches.js")
+
+db.students.update({surname:"Egorov"}, {$set:{score:100}})  // change or add
+db.students.update({surname:"Egorov"}, {$unset:{score:1}})    // delete value
+db.students.remove({surname:"Egorov"})   // delete document
+
+db.footballMatches.drop()      // drop collection
+
+db.dropDatabase()       // drop database
+
+setItem(key, value)	// add key/value
+getItem(key)		// get value by key
+key(index)		// get key by position
+clear()			// delete all key/value
+removeItem(key)		// delete certain key/value
+
+db.footballTeams.insertMany([
+{name:"Arsenal", coach:"M. Arteta", players:["A. Ramsdale", "B. White", "W. Saliba", "G. Magalhães", "J. Kiwior", "M. Ødegaard", "Jorginho", "D. Rice", "B. Saka", "K. Havertz", "L. Trossard"]},
+{name:"Liverpool", coach:"J. Klopp", players:["C. Kelleher", "C. Bradley", "J. Quansah", "V. van Dijk", "J. Gomez", "A. Mac Allister", "W. Endo", "D. Szoboszlai", "H. Elliott", "D. Núñez", "L. Díaz"]},
+{name:"Manchester City", coach:"P. Gurdiola", players:["Ederson", "K. Walker", "M. Akanji", "N. Aké", "Rodri", "J. Stones", "P. Foden", "B. Silva", "K. De Bruyne", "J. Álvarez", "E. Haaland"]},
+{name:"Manchester United", coach:"E. ten Hag", players:["A. Onana", "D. Dalot", "J. Evans", "R. Varane", "V. Lindelöf", "S. McTominay", "Casemiro", "K. Mainoo", "B. Fernandes", "A. Garnacho", "M. Rashford"]},
+{name:"Chealsea", coach:"M. Pochettino", players:["Đ. Petrović", "M. Gusto", "A. Disasi", "T. Chalobah", "M. Cucurella", "E. Fernández", "M. Caicedo", "C. Palmer", "C. Gallagher", "M. Mudryk", "N. Jackson"]},
+{name:"Barcelona", coach:"Xavi", players:["M. ter Stegen", "R. Araújo", "A. Christensen", "I. Martínez", "J. Cancelo", "Gavi", "İ. Gündoğan", "A. Balde", "F. López", "F. Torres", "J. Félix"]},
+{name:"Real Madrid", coach:"C. Ancelotti", players:["K. Arriza­balaga", "D. Carvajal", "A. Rüdiger", "D. Alaba", "F. Mendy", "A. Tchouaméni", "F. Valverde", "J. Bellingham", "T. Kroos", "Rodrygo", "V. Júnior"]}
+])
+
+db.footballMatches.insertMany([
+{league:"Premier League", date:"1710085500", place:"Anfield, Liverpool, England", teams:["Liverpool", "Manchester City"], winner:""},
+{league:"Premier League", date:"1709479800", place:"Etihad Stadium, Manchester, England", teams:["Manchester City", "Manchester United"], winner:"Manchester City"},
+{league:"Premier League", date:"1708191000", place:"Etihad Stadium, Manchester, England", teams:["Manchester City", "Chealsea"], winner:""},
+{league:"Premier League", date:"1707064200", place:"Emirates Stadium, London, England", teams:["Arsenal", "Liverpool"], winner:"Arsenal"},
+{league:"Premier League", date:"1706732100", place:"Anfield, Liverpool, England", teams:["Liverpool", "Chealsea"], winner:"Liverpool"},
+{league:"Premier League", date:"1703352600", place:"Anfield, Liverpool, England", teams:["Liverpool", "Arsenal"], winner:""},
+{league:"Premier League", date:"1702830600", place:"Anfield, Liverpool, England", teams:["Liverpool", "Manchester United"], winner:""},
+{league:"Premier League", date:"1701893700", place:"Old Trafford, Manchester, England", teams:["Manchester United", "Chealsea"], winner:"Manchester United"},
+{league:"Premier League", date:"1700915400", place:"Etihad Stadium, Manchester, England", teams:["Manchester City", "Liverpool"], winner:""},
+{league:"Premier League", date:"1699806600", place:"Stamford Bridge, London, England", teams:["Chealsea", "Manchester City"], winner:""},
+{league:"Premier League", date:"1698593400", place:"Old Trafford, Manchester, England", teams:["Manchester United", "Manchester City"], winner:"Manchester City"},
+{league:"Premier League", date:"1697905800", place:"Stamford Bridge, London, England", teams:["Chealsea", "Arsenal"], winner:""},
+{league:"Premier League", date:"1696779000", place:"Emirates Stadium, London, England", teams:["Arsenal", "Manchester City"], winner:"Arsenal"},
+{league:"Premier League", date:"1693755000", place:"Emirates Stadium, London, England", teams:["Arsenal", "Manchester United"], winner:"Arsenal"},
+{league:"Premier League", date:"1691940600", place:"Stamford Bridge, London, England", teams:["Chealsea", "Liverpool"], winner:""},
+{league:"LaLiga", date:"1698502500", place:"Olímpic Lluís Companys, Barcelona, Spain", teams:["Barcelona", "Real Madrid"], winner:"Real Madrid"}
+])
+
+
+Backup:
+{league:"Premier League", date:"YYYY-mm-dd", place:"", teams:["Arsenal", "Chealsea"], winner:" "},
+{league:"Premier League", date:"YYYY-mm-dd", place:"", teams:["Manchester City", "Arsenal"], winner:" "},
+{league:"Premier League", date:"YYYY-mm-dd", place:"", teams:["Manchester United", "Arsenal"], winner:" "},
+{league:"Premier League", date:"YYYY-mm-dd", place:"", teams:["Manchester United", "Liverpool"], winner:" "},
+{league:"Premier League", date:"YYYY-mm-dd", place:"", teams:["Chealsea", "Manchester United"], winner:" "}
